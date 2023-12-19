@@ -2,9 +2,15 @@ package com.practice.demo.com;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.Date;
 
 @Getter
 @Setter
@@ -14,21 +20,27 @@ import lombok.ToString;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+
     private Long id;
 
-    @Column(name="name")
+    @NotNull(message = "Name should not be null")
     private String name;
 
-    @Column(name="age")
-    private Long age;
+    private Long age = 0L;
 
-    @Column(name="location")
     private String location;
 
-    @Column(name="email")
+    @Email(message = "Please enter the valid email address")
     private String email;
 
-    @Column(name="department")
+    @NotNull(message = "Department should not be null")
     private String department;
+
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private Date createdAt;
+
+    @UpdateTimestamp
+    @Column(name = "update_at")
+    private Date updateAt;
 }

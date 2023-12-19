@@ -3,6 +3,7 @@ package com.practice.demo.nis;
 import com.practice.demo.com.Employee;
 
 import com.practice.demo.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,24 +22,23 @@ public class Employeecontroller {
     }
 
     @GetMapping("/employees/{id}")
-    public String getEmployee (@PathVariable("id")long id){
-    return "Fetching the employee details for the id"+id;
+    public Employee getEmployee (@PathVariable("id")long id){
+    return eService.getSingleEmployee(id);
     }
 
     @PostMapping("/employees")
-    public Employee saveEmployee (@RequestBody Employee employee){
+    public Employee saveEmployee (@Valid @RequestBody Employee employee){
     return eService.saveEmployee(employee);
     }
 
     @PutMapping("/employees/{id}")
     public  Employee updateEmployee (@PathVariable Long id, @RequestBody  Employee employee){
-    System.out.println("updating the employee data for the id"+id);
-    return employee;
+     employee.setId(id);
+     return eService.updateEmployee(employee);
     }
 
     @DeleteMapping("/employees")
-    public String deleteEmployee (@RequestParam Long id){
-    return "deleting the employee details for the id"+id;
+    public void deleteEmployee (@RequestParam Long id){
+    eService.deleteEmployee(id);
     }
-
 }
