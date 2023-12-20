@@ -14,17 +14,27 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-   List<Employee> findByName(String name);
+//   List<Employee> findByName(String name);
+//
+//   List<Employee> findByNameAndLocation(String name, String location);
+//
+//   List<Employee> findByNameContaining(String keyboard, Sort sort);
+//
+//   @Query("FROM Employee WHERE name=:name OR location =:location")
+//   List<Employee> getEmployeesByNameOrLocation(String name, String location);
+//
+//   @Transactional
+//   @Modifying
+//   @Query("DELETE FROM Employee WHERE name=:name")
+//   Integer deleteEmployeeNByName(String name);
 
-   List<Employee> findByNameAndLocation(String name, String location);
 
-   List<Employee> findByNameContaining(String keyboard, Sort sort);
+//    List<Employee> findByDepartmentName(String name);
+//
+//    @Query("FROM Employee WHERE department.name=:name")
+//    List<Employee> getEmployeesByDeptName (String name);
 
-   @Query("FROM Employee WHERE name=:name OR location =:location")
-   List<Employee> getEmployeesByNameOrLocation(String name, String location);
+    @Query(value = "select * from tbl_employee", nativeQuery = true)
+    List<Employee> getEmployees ();
 
-   @Transactional
-   @Modifying
-   @Query("DELETE FROM Employee WHERE name=:name")
-   Integer deleteEmployeeNByName(String name);
 }
