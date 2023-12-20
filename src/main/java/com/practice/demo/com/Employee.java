@@ -3,6 +3,8 @@ package com.practice.demo.com;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,7 +25,7 @@ public class Employee {
 
     private Long id;
 
-    @NotNull(message = "Name should not be null")
+    @NotBlank(message = "Name should not be null")
     private String name;
 
     private Long age = 0L;
@@ -33,7 +35,7 @@ public class Employee {
     @Email(message = "Please enter the valid email address")
     private String email;
 
-    @NotNull(message = "Department should not be null")
+    @NotBlank(message = "Department should not be null")
     private String department;
 
     @CreationTimestamp
