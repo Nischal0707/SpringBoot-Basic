@@ -34,7 +34,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 //    @Query("FROM Employee WHERE department.name=:name")
 //    List<Employee> getEmployeesByDeptName (String name);
 
-    @Query(value = "select * from tbl_employee", nativeQuery = true)
-    List<Employee> getEmployees ();
+//    @Query(value = "select * from tbl_employee", nativeQuery = true)
+//    List<Employee> getEmployees ();
+
+    List<Employee> getAllRecords();
 
 }

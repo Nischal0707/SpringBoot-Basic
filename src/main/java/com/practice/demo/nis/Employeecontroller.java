@@ -69,7 +69,8 @@ public class Employeecontroller {
     @GetMapping("/employees")
     public List<Employee> getEmployees(){
        // return eRepo.getEmployees();
-        return eDAO.getAll();
+      //  return eDAO.getAll();
+        return eRepo.getAllRecords();
     }
 }
 

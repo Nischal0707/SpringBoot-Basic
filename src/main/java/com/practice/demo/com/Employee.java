@@ -23,7 +23,8 @@ import java.util.List;
 @Entity
 @Table(name = "tbl_employee")
 @NoArgsConstructor
-@NamedNativeQuery(name= "getAllRecords", query= "select * from tbl_employee", resultClass = Employee.class )
+// @NamedNativeQuery(name= "getAllRecords", query= "select * from tbl_employee", resultClass = Employee.class )
+@NamedQuery(name = "Employee.getAllRecords", query = "FROM Employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
